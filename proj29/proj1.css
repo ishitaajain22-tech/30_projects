@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg,blue,purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left,.right{
+    width: 300px;
+    min-height: 380px;
+    margin: 20px;
+    border: 2px dashed white;
+}
+
+.list{
+    background: #e91e63;
+    height: 40px;
+    margin: 30px;
+    color: white;
+    text-align: center;
+    cursor: grab;
+    padding-top: 10px;
+}

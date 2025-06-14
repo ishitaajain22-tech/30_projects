@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="stopwatch">
+    <h1 id="displayTime">00:00:00</h1>
+    <div class="buttons">
+        <img src="images/stop.png" onclick="watchStop()">
+        <img src="images/start.png" onclick="watchStart()">
+        <img src="images/reset.png" onclick="watchReset()">
+    </div>
+   </div> 
+
+<script>
+    let [seconds,minutes,hours] = [0,0,0]
+    var displayTime = document.getElementById('displayTime');
+    let timer = null
+    function stopWatch(){
+        seconds++;
+        if(seconds == 60){
+            seconds=0
+            minutes++
+            if(minutes==60){
+                minutes = 0
+                hours++;
+            }
+        }
+
+        let h = hours <10 ? "0"+hours:hours;
+        let m=minutes<10 ? "0"+minutes:minutes;
+        let s = seconds<10? "0"+seconds:seconds;
+
+        displayTime.innerHTML = h+':'+m+':'+s;
+    }
+
+    function watchStart(){
+        if(timer==null){
+            timer=setInterval(stopWatch,100);
+        }
+    }
+
+    function watchStop(){
+        clearInterval(timer)
+        timer=null
+    }
+
+    function watchReset() {
+        clearInterval(timer); 
+        timer = null;         
+        [seconds, minutes, hours] = [0, 0, 0]; 
+        displayTime.innerHTML = "00:00:00"; 
+    }
+</script>
+</body>
+</html>

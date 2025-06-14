@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/2ce81b256a.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: #141a34;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container form{
+    width: 90%;
+    max-width: 500px;
+    padding: 50px 30px 20px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.fa-paper-plane{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    font-size: 26px;
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.input-grp{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    position: relative;
+}
+
+.input-grp label{
+    flex-basis: 28%;
+}
+
+.input-grp input,.input-grp textarea{
+    flex-basis: 60%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 10px 0;
+    border-bottom: 1px soldi #999;
+    color: black;
+    font-size: 16px;
+}
+
+::placeholder{
+    font-size: 14px;
+}
+
+form button{
+    background: #141a34;
+    color: white;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 10px 40px;
+    outline: 0;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 10px;
+}
+
+.input-grp span{
+    position: absolute;
+    bottom: 12px;
+    right: 17px;
+    font-size: 14px;
+    color: red;
+}
+
+#submit-e{
+    color: red;
+}
+
+.input-grp span i{
+    background-color: seagreen;
+    color: white;
+    border-radius: 50%;
+    border: 2px solid seagreen;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <i class="fa-solid fa-paper-plane"></i>
+            <div class="input-grp">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name" id="name" onkeyup="validateName()">
+                <span id="name-e"></span>
+            </div>
+            <div class="input-grp">
+                <label>Phone No.</label>
+                <input type="tel" placeholder="123 456 7890" id="phone" onkeyup="validatePhone()">
+                <span id="phone-e"></span>
+            </div>
+            <div class="input-grp">
+                <label>Email</label>
+                <input type="email" placeholder="Enter email" id="email" onkeyup="validateEmail()">
+                <span id="email-e"></span>
+            </div>
+            <div class="input-grp">
+                <label>Your message</label>
+                <textarea rows="5" placeholder="Enter your message" id="msg" onkeyup="validateMsg()"></textarea>
+                <span id="msg-e"></span>
+            </div>
+
+            <button id="submit" onclick="return validateForm()">Submit</button>
+            <span id="submit-e"></span>
+        </form>
+    </div>
+<script src="index.js"></script>
+</body>
+</html>

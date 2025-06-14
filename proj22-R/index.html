@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Document</title>
+     <style>
+        *{
+            margin: 0;
+            padding: 0%;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white ;
+        }
+        .img-box{
+            width: 60%;
+            margin: auto;
+            line-height: 0;
+            background-image: url(images/background.png);
+            overflow: hidden;
+            position: relative;
+        }
+        .img-wrap{
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+        }
+     </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img-box">
+            <img src="images/transparent.png" width="100%">
+
+            <div class="img-wrap">
+                <img src="images/original.jpg" id="original" width="100%">
+            </div>
+        </div>
+    </div>
+
+<script>
+    var ImgBox = document.querySelector('.img-box');
+    var ImgWrap = document.querySelector('.img-wrap');
+    var original = document.getElementById('original');
+
+    // original.style.width = ImgBox.offsetWidth + "px";
+    var leftSpace = ImgBox.offsetLeft;
+
+    ImgBox.onmousemove = function(e){
+        var boxWidth = (e.pageX - leftSpace)+ "px";
+        ImgWrap.style.width = boxWidth;
+    }
+</script>
+</body>
+</html>

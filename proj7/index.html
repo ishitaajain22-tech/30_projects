@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #bbc6fa;
+        }
+        .quote-box{
+            background: white;
+            width: 700px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
+        }
+        .quote-box h2{
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .quote-box h2::after{
+            content: '';
+            width: 75px;
+            height: 3px;
+            border-radius: 3px;
+            background: rgb(23, 124, 229);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .quote-box blockquote{
+            font-size: 26px;
+            min-height: 110px;
+        }
+        .quote-box blockquote::before,.quote-box blockquote::after{
+            content: '"';
+        }
+        .quote-box span{
+            display: block;
+            margin-top: 10px;
+            float: right;
+            position: relative;
+        }
+        .quote-box span::before{
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: rgb(23, 124, 229);
+            position: absolute;
+            top: 50%;
+            left: -30px;
+        }
+        .quote-box div{
+            width: 100%;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+        .quote-box button{
+            background: rgb(23, 124, 229);
+            color: white;
+            border-radius: 25px;
+            border: 1px solide rgb(23, 124, 229);
+            width: 150px;
+            height: 50px;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .quote-box button img{
+            width: 20px;
+            margin-right: 10px;
+        }
+        .quote-box button:nth-child(2){
+            background: transparent;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-box">
+        <h2>Quote Box</h2>
+        <blockquote id="quote">Loading...</blockquote>
+        <span id="author">Loading...</span>
+        <div>
+            <button onclick="getQuote()">New Quote</button>
+            <button onclick="tweet()"><img src="twitter.png">Tweet</button>
+        </div>
+    </div>
+
+<script>
+    const API_URL = 'https://api.quotable.io/random';
+    let quote = document.getElementById('quote')
+    let author = document.getElementById('author')
+
+    async function getQuote() {
+        let response = await fetch(API_URL)
+        var data = await response.json();
+        quote.innerText = data.content;
+        author.innerText = data.author;
+    }
+
+    function tweet(){
+        window.open("https://twitter.com/intent/tweet?text="+quote.innerHTML+"----by "+author.innerHTML,"Tweet Window","width=600,height=300")
+    }
+</script>
+</body>
+</html>

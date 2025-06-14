@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        body{
+            background: black;
+            color: white;
+        }
+        .container{
+            margin: 12%;
+        }
+        .display{
+            width: 550px;
+            height: 20px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 26px 20px;
+            border-radius: 5px;
+        }
+        .container h1{
+            font-weight: 500;
+            font-size: 45px;
+        }
+        .container h1 span{
+            color: #019f55;
+            border-bottom: 4px solid #019f55;
+            padding-bottom:7px ;
+        }
+        .display input{
+            border: 0;
+            outline: none;
+            font-size: 24px;
+        }
+        .container button{
+            border: 0;
+            outline: 0;
+            background: #019f55;
+            color: white;
+            font-size: 22px;
+            font-weight: 300;
+            padding: 12px 30px 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate a <br><span>Random Password</span></h1>
+        <div class="display">
+            <input type="text" id="password" placeholder="Password"/> 
+            <img src="copy.png" width="50px" height="50px" onclick="copyPass()" >
+        </div>
+        <button onclick="createPassword()">Generate Password</button>
+    </div>
+    
+    <script>
+        let passwordB = document.querySelector('#password')
+        const length=12;
+        let upperCase ='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        let lowerCase = 'abcdefghijklmnlopqrstuvwxyz'
+        let nums = '0123456789'
+        let symbol='@#$%^&*()_+~|}{}[]<>/-='
+        let allChars = upperCase+lowerCase+nums+symbol;
+
+        function createPassword(){
+            let password='';
+            password+= upperCase[Math.floor(Math.random()*upperCase.length)]
+            password+=lowerCase[Math.floor(Math.random()*lowerCase.length)]
+            password+=nums[Math.floor(Math.random()*nums.length)]
+            password+=symbol[Math.floor(Math.random()*symbol.length)]
+
+            while (length> password.length){
+                password+=allChars[Math.floor(Math.random()*allChars.length)]
+            }
+            passwordB.value = password;
+        }
+        function copyPass(){
+            passwordB.select();
+            document.execCommand("copy");
+            // navigator.clipboard.writeText(passwordB.value);
+        }
+    </script>
+</body>
+</html>

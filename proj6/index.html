@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Document</title>
+   <style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    body{
+        overflow-x: hidden; 
+    }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg,blue,purple);
+        color: white;
+        padding: 10px;
+    }
+    .calculator{
+        width: 100%;
+        max-width: 600px;
+        margin-left: 10%;
+        margin-top: 10%;
+    }
+    .calculator h1{
+        font-size: 60px;
+    }
+    .input-box{
+        margin: 40px 0;
+        padding: 35px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+    }
+    .input-box input{
+        flex: 1;
+        margin-right: 20px;
+        padding: 14px 20px;
+        border: 0;
+        outline: 0;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+    .input-box button{
+        background: #ffff76;
+        border: 0;
+        outline: 0;
+        padding: 15px 30px;
+        border-radius: 5px;
+        font-weight: 500;
+        color: navy;
+        cursor: pointer;
+    }
+    #msg{
+        font-size: 20px;
+    }
+    #msg span{
+        color: #ffff76;
+    }
+   </style>
+</head>
+<body>
+<div class="container">
+    <div class="calculator">
+        <h1>Age Calculator</h1>
+        <div class="input-box">
+            <input type="date" id="date">
+            <button onclick="calculateAge()">Calcualator</button>
+        </div>
+        <p id="msg"></p>
+    </div>
+</div>
+<script>
+    let input= document.getElementById('date');
+    input.max = new Date().toISOString().split('T')[0] //makes aage ki dates non available, isostring method to convert date into string, splits[T], splits into in 2 parts, the 0th index gives us the date,1st index in ajeeb sa format(kaam nhi aata)
+
+    let msg= document.getElementById('msg')
+
+    function calculateAge(){
+        let dob = new Date(input.value)
+        
+        let d1=dob.getDate();
+        let m1=dob.getMonth()+1; //months starts from 0
+        let y1=dob.getFullYear();
+
+        let today = new Date();
+
+        let d2=today.getDate();
+        let m2=today.getMonth()+1;
+        let y2=today.getFullYear();
+
+        let d3,m3,y3;
+        y3=y2-y1;
+
+        if(m2>=m1){
+            m3=m2-m1;
+        }else{
+            y3--;
+            m3=12+m2-m1;
+        }
+
+        if(d2>=d1){
+            d3=d2-d1;
+        }else{
+            m3--;
+            d3= getDinM(y1,m1)+d2-d1;
+        }
+        if(m3<0){
+            m3=11;
+            y3--;
+        }
+
+        msg.innerHTML = `You are <span>${y3}</span> years,<span>${m3}</span> months and <span>${d3}</span> days`
+    }
+
+    function getDinM(year,month){
+        return new Date(year,month,0).getDate();
+    }
+</script>
+</body>
+</html>

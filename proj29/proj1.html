@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag-Drop Project</title>
+    <link rel="stylesheet" href="proj1.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="left">
+            <div class="list" draggable="true">List Item 1</div>
+            <div class="list" draggable="true">List Item 2</div>
+            <div class="list" draggable="true">List Item 3</div>
+            <div class="list" draggable="true">List Item 4</div>
+
+        </div>
+        <div class="right"></div>
+    </div>
+
+    <script>
+        let lists= document.querySelectorAll('.list')
+        let right = document.querySelector('.right')
+        let left=document.querySelector('.left')
+
+        lists.forEach(list => {
+            list.addEventListener('dragstart',function(e){
+                let selected=e.target;
+
+                right.addEventListener('dragover',function(e){
+                    e.preventDefault();
+                })
+                right.addEventListener('drop',function(e){
+                    right.appendChild(selected);
+                    selected=null;
+                })
+
+                left.addEventListener('dragover',function(e){
+                    e.preventDefault();
+                })
+                left.addEventListener('drop',function(e){
+                    left.appendChild(selected);
+                    selected=null;
+                })
+            })
+        });
+    </script>
+</body>
+</html>

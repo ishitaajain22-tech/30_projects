@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto-Currency</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-image: url(images/background.png);
+            background-position: center;
+            background-size: cover;
+            padding: 0 7%;
+            color: white;
+        }
+        nav{
+            width: 90%;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        nav ul{
+            flex: 1;
+        }
+        nav ul li{
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+        nav ul li a{
+            color: white;
+            text-decoration: none;
+        }
+        nav .en{
+            color: white;
+            text-decoration: none;
+            border: 1px solid #fff;
+            padding: 10px 30px;
+            border-radius: 20px;
+        }
+        .content{
+            margin-top: 12%;
+        }
+
+        .content h1{
+            font-size: 88px;
+            margin-bottom: 15px;
+        }
+        .content h1 span{
+            color: #ff960b;
+        }
+        .content p{
+            line-height: 22px;
+            font-size: 14px;
+        }
+        .content .en{
+            display: inline-block;
+            margin-top: 30px;
+            background-color: #ff960b;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+        }
+        .coin-lst{
+            position: absolute;
+            right: 10%;
+            bottom: 50px;
+            display: flex;
+            align-items: center;
+        }
+        .coin{
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin: 0 15px;
+            color: #ff960b;
+            border: 1px solid white;
+            padding: 20px 30px;
+            border-radius: 8px;
+        }
+        .coin img{
+            width: 50px;
+            margin-right: 10px;
+        }
+        .coin h3{
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        ::-webkit-scrollbar{
+        scrollbar-width: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" alt="logo" width="50px" class="logo">
+            <ul>
+                <li><a href="#">Market</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">White Papers</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <a href="#" class="en">EN</a>
+        </nav>
+
+        <div class="content">
+            <h1>BUY & <br> SELL <span>Crypto</span></h1>
+            <p>World's biggest Cryptocurrency exchange available on web as well as mobile phone</p>
+            <a href="#" class="en">EXPLORE MORE</a>
+        </div>
+
+        <div class="coin-lst">
+            <div class="coin">
+                <img src="images/bitcoin.png">
+                <div>
+                    <h3 id="bit"></h3>
+                    <p id="bp"></p>
+                    <p id="bmc"></p>
+                </div>
+            </div>
+            <div class="coin">
+                <img src="images/ethereum.png" >
+                <div>
+                    <h3 id="eth"></h3>
+                    <p id="ep"></p>
+                    <p id="emc"></p>
+                </div>
+            </div>
+            <div class="coin">
+                <img src="images/dogecoin.png" >
+                <div>
+                    <h3 id="doge"></h3>
+                    <p id="dp"></p>
+                    <p id="dmc"></p>
+                </div>
+            </div>
+        </div>
+    </div>  
+<script src="index.js"></script>
+</body>
+</html>

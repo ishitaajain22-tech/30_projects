@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Document</title>
+     <style>
+          *{
+               margin: 0;
+               padding: 0;
+          }
+          .container{
+               width: 100%;
+               min-height: 100vh;
+               background: linear-gradient(145deg, purple, brown);
+               color: white;
+               padding-top: 4%;
+               padding-left: 10%;
+          }
+          .container h1{
+               display: flex;
+               align-items: center;
+               font-size: 35px;
+               font-weight: 600;
+          }
+          .container h1 img{
+               width: 60px;
+          }
+          .container button img{
+               width: 25px;
+               margin-right: 8px;
+          }
+          .container button{
+               display: flex;
+               align-items: center;
+               background: green;
+               color: white;
+               font-size: 16px;
+               outline: 0;
+               border: 0;
+               border-radius: 40px;
+               padding: 15px 25px;
+               margin: 30px 0 20px;
+               cursor: pointer;
+          }
+          .input-box{
+               position: relative;
+               width: 100%;
+               max-width: 500px;
+               min-height: 150px;
+               background: white;
+               color: black;
+               padding: 20px;
+               margin: 20px 0;
+               outline: none;
+               border-radius: 5px;
+          }
+          .input-box img{
+               width: 25px;
+               position: absolute;
+               bottom: 15px;
+               right: 15px;
+               cursor: pointer;
+          }
+     </style>
+</head>
+<body>
+    <div class="container">
+      <h1><img src="images/notes.png" alt=""> Notes</h1>
+      <button class="btn"> <img src="images/edit.png" alt="">Create Notes</button>
+      <div class="notes-container">
+          <p contenteditable="true" class="input-box">
+               <img src="images/delete.png">
+          </p>
+      </div>
+    </div>
+
+<script>
+     const notesContainer = document.querySelector('.notes-container');
+     let button = document.querySelector('.btn')
+     let noteInput = document.querySelector('.input-box')
+     let notes = document.querySelectorAll('.input-box')
+
+     function showNotes(){
+          notesContainer.innerHTML = localStorage.getItem('notes');
+     }
+
+     showNotes();
+
+     function updateStorage(){
+          localStorage.setItem('notes', notesContainer.innerHTML)
+     }
+
+     button.addEventListener('click',()=>{
+          let inputBox=document.createElement('p');
+          let img=document.createElement('img');
+          inputBox.className= 'input-box';
+          inputBox.setAttribute('contenteditable','true');
+          img.src = 'images/delete.png'
+          notesContainer.appendChild(inputBox).appendChild(img);
+     })
+
+     notesContainer.addEventListener('click',function(e){
+          if(e.target.tagName === 'IMG'){
+               e.target.parentElement.remove();
+               updateStorage();
+          }else if(e.target.tagName === 'P'){
+               let notes = document.querySelectorAll('.input-box')
+               notes.forEach(nt =>{
+                    nt.onkeyup = function(){
+                         updateStorage();
+                    }
+               })
+          }
+     })
+     // button.addEventListener('click',()=>{
+     //      noteInput.style.display = 'block'
+     // }) not because we need to create multiple,and at every click
+     // localStorage.clear();
+</script>
+</body>
+</html>
+
+<!-- refresh check once -->
